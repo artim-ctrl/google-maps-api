@@ -13,6 +13,8 @@ puppeteer.launch({headless: 'new'}).then(b => {
 
 const app = express();
 app.get('/', async (req, res) => {
+    logger.info(req.url);
+
     try {
         await getInfoByPlaceIdAction(req, res, browser);
     } catch (error) {
