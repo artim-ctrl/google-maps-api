@@ -2,7 +2,7 @@
 
 const DailyRotateFile = require('winston-daily-rotate-file');
 const {createLogger, format} = require('winston');
-const {APP_ENV} = require('./config');
+const {APP_ENV} = require('../config/config');
 const {combine, timestamp, label, printf, splat, metadata} = format;
 
 const rotateFileTransport = new DailyRotateFile({

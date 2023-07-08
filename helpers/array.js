@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * const object = {
  *     name: 'Your name',
