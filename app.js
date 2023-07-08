@@ -8,13 +8,7 @@ const {dataGet} = require('./helpers/array');
 const {APP_PORT, PROXY_USERNAME, PROXY_PASSWORD, PROXY_DNS, PROXY_PORT} = require('./services/config');
 
 let browser;
-puppeteer.launch({
-    headless: 'new',
-    // args: [
-        // '--proxy-server=139.144.24.46:8080',
-        // `--proxy-server=http://${PROXY_USERNAME}:${PROXY_PASSWORD}@${PROXY_DNS}:${PROXY_PORT}`,
-    // ],
-}).then(b => {
+puppeteer.launch({headless: 'new'}).then(b => {
     browser = b;
 })
 
