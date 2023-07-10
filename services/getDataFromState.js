@@ -1,8 +1,8 @@
 'use strict';
 
-const {logger} = require("./logger");
-const {dataGet} = require("../helpers/array");
-const formatWorkingHours = require("./formatWorkingHours");
+const {logger} = require('./logger');
+const {dataGet} = require('../helpers/array');
+const formatWorkingHours = require('./formatWorkingHours');
 
 const getDataFromState = (placeId, state) => {
     logger.info('STATE', {placeId, state});
@@ -25,14 +25,14 @@ const getDataFromState = (placeId, state) => {
 
         [data.name = null, data.address = null] = dataGet(state, '9.0')?.split(' · ') ?? [];
 
-        const notFormattedPayloadState = dataGet(state, '3.6');
+        const notFormattedPayloadState = dataGet(state, '3.6')?.substring(5);
         if (null === notFormattedPayloadState) {
             logger.error('Payload state not found', {placeId, state});
 
             return null;
         }
 
-        const payloadState = JSON.parse(notFormattedPayloadState.substring(5));
+        const payloadState = JSON.parse(notFormattedPayloadState);
         logger.info('PAYLOAD STATE', {placeId, payloadState});
 
         data.phone = dataGet(payloadState, '6.178.0.0');

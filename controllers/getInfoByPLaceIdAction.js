@@ -1,8 +1,9 @@
 'use strict';
 
 const getDataFromState = require('../services/getDataFromState');
-const useProxy = require("puppeteer-page-proxy");
-const {PROXY_USERNAME, PROXY_PASSWORD, PROXY_DNS, PROXY_PORT} = require("../config/config");
+const useProxy = require('puppeteer-page-proxy');
+const {PROXY_USERNAME, PROXY_PASSWORD, PROXY_DNS, PROXY_PORT} = require('../config/config');
+const {logger} = require("../services/logger");
 
 const getInfoByPlaceIdAction = (req, res, browser) => {
     const data = [];
@@ -19,6 +20,8 @@ const getInfoByPlaceIdAction = (req, res, browser) => {
             count++;
             if (count === placeIds.length) {
                 res.status(200).json({data})
+
+                logger.info('Log response', {data});
             }
         });
     }

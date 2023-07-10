@@ -7,7 +7,7 @@ const {combine, timestamp, label, printf, splat, metadata} = format;
 
 const rotateFileTransport = new DailyRotateFile({
     filename: 'logs/application-%DATE%.log',
-    datePattern: 'YYYY-MM-DD',
+    datePattern: 'YYYY-MM-DD-HH',
 });
 
 const logFormat = printf(({timestamp, label, level, message, metadata}) => {

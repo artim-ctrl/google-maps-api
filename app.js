@@ -25,7 +25,9 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(APP_PORT, () => {
-    logger.info(`Running on 127.0.0.1:${APP_PORT}`);
+    const log = `Running on http://127.0.0.1:${APP_PORT}`;
 
-    console.log(`Running on 127.0.0.1:${APP_PORT}`);
+    logger.info(log);
+
+    console.log(log);
 });

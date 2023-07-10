@@ -19,8 +19,8 @@ const formatWorkingHours = (workingHours) => {
         dateTo.setHours(day[6][0][2]);
         dateTo.setMinutes(day[6][0][3]);
 
-        const formattedDateFrom = dateFrom.toLocaleTimeString("en-US", {hour: "2-digit", minute: "2-digit"});
-        const formattedDateTo = dateTo.toLocaleTimeString("en-US", {hour: "2-digit", minute: "2-digit"});
+        const formattedDateFrom = dateFrom.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+        const formattedDateTo = dateTo.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
 
         return {
             day: day[0],
