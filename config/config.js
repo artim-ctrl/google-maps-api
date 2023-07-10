@@ -7,6 +7,7 @@ module.exports = {
     APP_ENV: process.env.APP_ENV,
     APP_PORT: process.env.APP_PORT,
 
+    PROXY_SECURE: process.env.PROXY_SECURE,
     PROXY_USERNAME: process.env.PROXY_USERNAME,
     PROXY_PASSWORD: process.env.PROXY_PASSWORD,
     PROXY_DNS: process.env.PROXY_DNS,
