@@ -25,32 +25,37 @@ const getInfoByPlaceIdAction = (req, res, browser) => {
             }
         });
     }
-}
+};
 
 const getState = (browser, placeId) => {
-    return new Promise((resolve, reject) => {
-        browser.newPage().then(page => {
-            page.setViewport({width: 1, height: 1, isMobile: false}).then(() => {
-                page.setDefaultNavigationTimeout(60000);
+    return new Promise(async (resolve, reject) => {
+        const page = await browser.newPage();
 
-                let proxyString = (PROXY_SECURE ? 'https' : 'http') + '://';
-                if (PROXY_USERNAME && PROXY_PASSWORD) {
-                    proxyString += `${PROXY_USERNAME}:${PROXY_PASSWORD}@`;
-                }
+        await page.setViewport({width: 1, height: 1, isMobile: false});
 
-                proxyString += `${PROXY_DNS}:${PROXY_PORT}`;
-                useProxy(page, proxyString).then(() => {
-                    page.goto(`https://www.google.com/maps/place/?hl=en&q=place_id:${placeId}`).then(() => {
-                        page.evaluate(() => window.APP_INITIALIZATION_STATE).then(state => {
-                            resolve(state);
+        await page.setDefaultNavigationTimeout(60000);
 
-                            page.close();
-                        });
-                    });
-                });
-            });
-        });
+        await useProxy(page, configureProxyString());
+
+        await page.goto(`https://www.google.com/maps/place/?hl=en&q=place_id:${placeId}`);
+
+        const state = await page.evaluate(() => window.APP_INITIALIZATION_STATE);
+
+        await page.close();
+
+        resolve(state);
     });
+};
+
+const configureProxyString = () => {
+    let proxyString = (PROXY_SECURE ? 'https' : 'http') + '://';
+    if (PROXY_USERNAME && PROXY_PASSWORD) {
+        proxyString += `${PROXY_USERNAME}:${PROXY_PASSWORD}@`;
+    }
+
+    proxyString += `${PROXY_DNS}:${PROXY_PORT}`;
+
+    return proxyString;
 };
 
 module.exports = getInfoByPlaceIdAction;
