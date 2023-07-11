@@ -2,7 +2,7 @@
 
 const getDataFromState = require('../services/getDataFromState');
 const useProxy = require('puppeteer-page-proxy');
-const {PROXY_USERNAME, PROXY_PASSWORD, PROXY_DNS, PROXY_PORT, PROXY_SECURE} = require('../config/config');
+const {PROXY_USERNAME, PROXY_PASSWORD, PROXY_DNS, PROXY_PORT, PROXY_SECURE, PROXY} = require('../config/config');
 const {logger} = require('../services/logger');
 
 const getInfoByPlaceIdAction = (req, res, browser) => {
@@ -35,7 +35,9 @@ const getState = (browser, placeId) => {
 
         await page.setDefaultNavigationTimeout(60000);
 
-        await useProxy(page, configureProxyString());
+        if (PROXY) {
+            await useProxy(page, configureProxyString());
+        }
 
         await page.goto(`https://www.google.com/maps/place/?hl=en&q=place_id:${placeId}`);
 
