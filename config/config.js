@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
     APP_NAME: process.env.APP_NAME,
@@ -13,4 +13,4 @@ module.exports = {
     PROXY_PASSWORD: process.env.PROXY_PASSWORD,
     PROXY_DNS: process.env.PROXY_DNS,
     PROXY_PORT: process.env.PROXY_PORT,
-};
+}

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * const object = {
@@ -13,20 +13,20 @@
  * dataGet(object, 'value', 'defaultValue'); // 'defaultValue'
  */
 const dataGet = (object, path, defaultValue = null) => {
-    const keys = path.split('.');
-    let value = object;
+    const keys = path.split('.')
+    let value = object
 
     for (const key of keys) {
         if (!value || !(key in value)) {
-            return defaultValue;
+            return defaultValue
         }
 
-        value = value[key];
+        value = value[key]
     }
 
-    return value;
+    return value
 }
 
 module.exports = {
     dataGet,
-};
+}

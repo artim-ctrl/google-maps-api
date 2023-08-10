@@ -1,33 +1,33 @@
-'use strict';
+'use strict'
 
-const express = require('express');
-const puppeteer = require('puppeteer');
-const {logger} = require('./services/logger');
-const {APP_PORT} = require('./config/config');
-const getInfoByPlaceIdAction = require('./controllers/getInfoByPLaceIdAction');
+const express = require('express')
+const puppeteer = require('puppeteer')
+const { logger } = require('./services/logger')
+const { APP_PORT } = require('./config/config')
+const getInfoByPlaceIdAction = require('./controllers/getInfoByPLaceIdAction')
 
-let browser;
-puppeteer.launch({headless: 'new'}).then(b => {
-    browser = b;
+let browser
+puppeteer.launch({ headless: 'new' }).then((b) => {
+    browser = b
 })
 
-const app = express();
+const app = express()
 app.get('/', async (req, res) => {
-    logger.info(req.url);
+    logger.info(req.url)
 
     try {
-        await getInfoByPlaceIdAction(req, res, browser);
+        await getInfoByPlaceIdAction(req, res, browser)
     } catch (error) {
-        logger.error(error.message);
+        logger.error(error.message)
 
-        res.sendStatus(500);
+        res.sendStatus(500)
     }
-});
+})
 
 app.listen(APP_PORT, () => {
-    const log = `Running on http://127.0.0.1:${APP_PORT}`;
+    const log = `Running on http://127.0.0.1:${APP_PORT}`
 
-    logger.info(log);
+    logger.info(log)
 
-    console.log(log);
-});
+    console.log(log)
+})
