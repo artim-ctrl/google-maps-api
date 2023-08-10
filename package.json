@@ -8,6 +8,7 @@
     "start": "node app.js",
     "format": "prettier --write \"**/*.{js,ts}\" --ignore-path .gitignore"
   },
+  "type": "module",
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

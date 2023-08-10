@@ -1,10 +1,10 @@
 'use strict'
 
-const express = require('express')
-const puppeteer = require('puppeteer')
-const { logger } = require('./services/logger')
-const { APP_PORT } = require('./config/config')
-const getInfoByPlaceIdAction = require('./controllers/getInfoByPLaceIdAction')
+import express from 'express'
+import puppeteer from 'puppeteer'
+import { logger } from './services/logger.js'
+import { APP_PORT } from './config/config.js'
+import { getInfoByPlaceIdAction } from './controllers/getInfoByPLaceIdAction.js'
 
 let browser
 puppeteer.launch({ headless: 'new' }).then((b) => {

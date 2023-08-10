@@ -1,8 +1,9 @@
 'use strict'
 
-const DailyRotateFile = require('winston-daily-rotate-file')
-const { createLogger, format } = require('winston')
-const { APP_ENV } = require('../config/config')
+import DailyRotateFile from 'winston-daily-rotate-file'
+import { APP_ENV } from '../config/config.js'
+import { createLogger, format } from 'winston'
+
 const { combine, timestamp, label, printf, splat, metadata } = format
 
 const rotateFileTransport = new DailyRotateFile({
@@ -27,6 +28,4 @@ const logger = createLogger({
     transports: [rotateFileTransport],
 })
 
-module.exports = {
-    logger,
-}
+export { logger }

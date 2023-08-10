@@ -1,8 +1,8 @@
 'use strict'
 
-const { logger } = require('./logger')
-const { dataGet } = require('../helpers/array')
-const formatWorkingHours = require('./formatWorkingHours')
+import { logger } from './logger.js'
+import { dataGet } from '../helpers/array.js'
+import { formatWorkingHours } from './formatWorkingHours.js'
 
 const getDataFromState = (placeId, state) => {
     logger.info('STATE', { placeId, state })
@@ -22,7 +22,6 @@ const getDataFromState = (placeId, state) => {
             lng: dataGet(state, '0.0.1'),
             lat: dataGet(state, '0.0.2'),
         }
-
         ;[data.name = null, data.address = null] =
             dataGet(state, '9.0')?.split(' · ') ?? []
 
@@ -53,4 +52,4 @@ const getDataFromState = (placeId, state) => {
     }
 }
 
-module.exports = getDataFromState
+export { getDataFromState }

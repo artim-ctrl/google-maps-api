@@ -1,16 +1,15 @@
 'use strict'
 
-require('dotenv').config()
+import { config } from 'dotenv'
 
-module.exports = {
-    APP_NAME: process.env.APP_NAME,
-    APP_ENV: process.env.APP_ENV,
-    APP_PORT: process.env.APP_PORT,
+config()
 
-    PROXY: 'true' === process.env.PROXY,
-    PROXY_SECURE: 'true' === process.env.PROXY_SECURE,
-    PROXY_USERNAME: process.env.PROXY_USERNAME,
-    PROXY_PASSWORD: process.env.PROXY_PASSWORD,
-    PROXY_DNS: process.env.PROXY_DNS,
-    PROXY_PORT: process.env.PROXY_PORT,
-}
+export const APP_NAME = process.env.APP_NAME
+export const APP_ENV = process.env.APP_ENV
+export const APP_PORT = process.env.APP_PORT
+export const PROXY = 'true' === process.env.PROXY
+export const PROXY_SECURE = 'true' === process.env.PROXY_SECURE
+export const PROXY_USERNAME = process.env.PROXY_USERNAME
+export const PROXY_PASSWORD = process.env.PROXY_PASSWORD
+export const PROXY_DNS = process.env.PROXY_DNS
+export const PROXY_PORT = process.env.PROXY_PORT

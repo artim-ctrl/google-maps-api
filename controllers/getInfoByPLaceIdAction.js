@@ -1,21 +1,27 @@
 'use strict'
 
-const getDataFromState = require('../services/getDataFromState')
-const useProxy = require('puppeteer-page-proxy')
-const {
+import {
     PROXY_USERNAME,
     PROXY_PASSWORD,
     PROXY_DNS,
     PROXY_PORT,
     PROXY_SECURE,
     PROXY,
-} = require('../config/config')
-const { logger } = require('../services/logger')
+} from '../config/config.js'
+import { logger } from '../services/logger.js'
+import useProxy from 'puppeteer-page-proxy'
+import { getDataFromState } from '../services/getDataFromState.js'
 
 const getInfoByPlaceIdAction = (req, res, browser) => {
     const data = []
 
     const placeIds = req.query.places?.split(',') ?? []
+    if (0 === placeIds.length) {
+        res.status(200).send({ data: [] })
+
+        return
+    }
+
     let count = 0
     for (const placeId of placeIds) {
         getState(browser, placeId).then((state) => {
@@ -69,4 +75,4 @@ const configureProxyString = () => {
     return proxyString
 }
 
-module.exports = getInfoByPlaceIdAction
+export { getInfoByPlaceIdAction }

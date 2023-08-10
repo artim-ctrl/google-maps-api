@@ -50,4 +50,4 @@ const formatWorkingHours = (workingHours) => {
         })
 }
 
-module.exports = formatWorkingHours
+export { formatWorkingHours }

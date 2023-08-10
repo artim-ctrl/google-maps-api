@@ -27,6 +27,4 @@ const dataGet = (object, path, defaultValue = null) => {
     return value
 }
 
-module.exports = {
-    dataGet,
-}
+export { dataGet }
