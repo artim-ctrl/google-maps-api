@@ -1,6 +1,6 @@
 {
   "name": "google_maps_scraper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Google Maps Scraper",
   "author": "Dmitrii Derenko <dima.16.artemov@gmail.com>",
   "main": "app.js",
